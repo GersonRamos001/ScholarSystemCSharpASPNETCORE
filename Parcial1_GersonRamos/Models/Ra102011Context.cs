@@ -37,11 +37,9 @@ public partial class Ra102011Context : DbContext
     {
         modelBuilder.Entity<Curso>(entity =>
         {
-            entity.HasKey(e => e.IdCurso).HasName("PK__Cursos__FE00CD1CC95B2863");
+            entity.HasKey(e => e.IdCurso).HasName("PK__Cursos__FE00CD1C55A88D4B");
 
-            entity.Property(e => e.IdCurso)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_curso");
+            entity.Property(e => e.IdCurso).HasColumnName("Id_curso");
             entity.Property(e => e.NombreCurso)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -50,32 +48,28 @@ public partial class Ra102011Context : DbContext
 
         modelBuilder.Entity<CursosInscrito>(entity =>
         {
-            entity.HasKey(e => e.IdInscripcion).HasName("PK__Cursos_i__50231782E8660F6F");
+            entity.HasKey(e => e.IdInscripcion).HasName("PK__Cursos_i__5023178265E09D06");
 
             entity.ToTable("Cursos_inscritos");
 
-            entity.Property(e => e.IdInscripcion)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_inscripcion");
+            entity.Property(e => e.IdInscripcion).HasColumnName("Id_inscripcion");
             entity.Property(e => e.IdCurso).HasColumnName("Id_curso");
             entity.Property(e => e.IdEstudiante).HasColumnName("Id_estudiante");
 
             entity.HasOne(d => d.IdCursoNavigation).WithMany(p => p.CursosInscritos)
                 .HasForeignKey(d => d.IdCurso)
-                .HasConstraintName("FK__Cursos_in__Id_cu__48CFD27E");
+                .HasConstraintName("FK__Cursos_in__Id_cu__45F365D3");
 
             entity.HasOne(d => d.IdEstudianteNavigation).WithMany(p => p.CursosInscritos)
                 .HasForeignKey(d => d.IdEstudiante)
-                .HasConstraintName("FK__Cursos_in__Id_es__47DBAE45");
+                .HasConstraintName("FK__Cursos_in__Id_es__44FF419A");
         });
 
         modelBuilder.Entity<Estudiante>(entity =>
         {
-            entity.HasKey(e => e.IdEstudiante).HasName("PK__Estudian__BE32832D752DD88E");
+            entity.HasKey(e => e.IdEstudiante).HasName("PK__Estudian__BE32832D7D998CEC");
 
-            entity.Property(e => e.IdEstudiante)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_estudiante");
+            entity.Property(e => e.IdEstudiante).HasColumnName("Id_estudiante");
             entity.Property(e => e.CorreoElectronico)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -89,11 +83,9 @@ public partial class Ra102011Context : DbContext
 
         modelBuilder.Entity<Profesore>(entity =>
         {
-            entity.HasKey(e => e.IdProfesor).HasName("PK__Profesor__9298F53ACEF8ED1F");
+            entity.HasKey(e => e.IdProfesor).HasName("PK__Profesor__9298F53ACAB32A09");
 
-            entity.Property(e => e.IdProfesor)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_profesor");
+            entity.Property(e => e.IdProfesor).HasColumnName("Id_profesor");
             entity.Property(e => e.NombreProfesor)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -102,32 +94,28 @@ public partial class Ra102011Context : DbContext
 
         modelBuilder.Entity<ProfesoresCurso>(entity =>
         {
-            entity.HasKey(e => e.IdProfesoresCurso).HasName("PK__Profesor__F44C124215A8CFFD");
+            entity.HasKey(e => e.IdProfesoresCurso).HasName("PK__Profesor__F44C1242BA72AC61");
 
             entity.ToTable("Profesores_Curso");
 
-            entity.Property(e => e.IdProfesoresCurso)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_profesoresCurso");
+            entity.Property(e => e.IdProfesoresCurso).HasColumnName("Id_profesoresCurso");
             entity.Property(e => e.IdCurso).HasColumnName("Id_curso");
             entity.Property(e => e.IdProfesor).HasColumnName("Id_profesor");
 
             entity.HasOne(d => d.IdCursoNavigation).WithMany(p => p.ProfesoresCursos)
                 .HasForeignKey(d => d.IdCurso)
-                .HasConstraintName("FK__Profesore__Id_cu__4222D4EF");
+                .HasConstraintName("FK__Profesore__Id_cu__3F466844");
 
             entity.HasOne(d => d.IdProfesorNavigation).WithMany(p => p.ProfesoresCursos)
                 .HasForeignKey(d => d.IdProfesor)
-                .HasConstraintName("FK__Profesore__Id_pr__4316F928");
+                .HasConstraintName("FK__Profesore__Id_pr__403A8C7D");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.IdRol).HasName("PK__Roles__2D95A8947E31773F");
+            entity.HasKey(e => e.IdRol).HasName("PK__Roles__2D95A894FA2DBDB9");
 
-            entity.Property(e => e.IdRol)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_rol");
+            entity.Property(e => e.IdRol).HasColumnName("Id_rol");
             entity.Property(e => e.RoleName)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -136,11 +124,9 @@ public partial class Ra102011Context : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuarios__EF59F7626BACF1C2");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuarios__EF59F76264DEDB38");
 
-            entity.Property(e => e.IdUsuario)
-                .ValueGeneratedNever()
-                .HasColumnName("Id_usuario");
+            entity.Property(e => e.IdUsuario).HasColumnName("Id_usuario");
             entity.Property(e => e.Clave)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -152,7 +138,7 @@ public partial class Ra102011Context : DbContext
 
             entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRol)
-                .HasConstraintName("FK__Usuarios__Id_rol__3B75D760");
+                .HasConstraintName("FK__Usuarios__Id_rol__38996AB5");
         });
 
         OnModelCreatingPartial(modelBuilder);
